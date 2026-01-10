@@ -1,0 +1,25 @@
+# Idioma y encoding
+export LANG=en_US.UTF-8
+
+# Historial
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+
+# Prompt mínimo (temporal)
+PROMPT='%n@%m:%~%#'
+
+# ==============================
+# ALIASES
+# ==============================
+
+alias gst='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gco='git checkout'
+alias groh='git reset --hard origin'
+alias ..='cd ..'
