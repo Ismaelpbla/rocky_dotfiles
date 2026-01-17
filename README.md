@@ -4,6 +4,8 @@ NOTAS DE DESARROLLO
 ```console
 ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 ```
+- Debemos hacer lo mismo con tmux.conf y con .gitconfig
+
 Esto permite sincronizar ambos archivos, de tal forma que si modificamos el archivo original, modificaremos tambien el enlace simbolico.
 
 Para customizar zsh con oh my zsh nos instalaremos el repo en local
