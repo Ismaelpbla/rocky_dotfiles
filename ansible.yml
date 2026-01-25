@@ -1,0 +1,38 @@
+- name: My initial setup local configuration
+  hosts: localhost
+  tasks:
+   - name: Install packages with apt
+     become: yes
+     ansible.builtin.apt:
+        name:
+          - zsh
+          - tmux
+          - git
+        state: present
+        
+   - name: Clone oh-my-zsh repository
+     ansible.builtin.git:
+       repo: https://github.com/ohmyzsh/ohmyzsh.git
+       dest: ~/.oh-my-zsh
+               
+   - name: Create symlinks
+     ansible.builtin.file:
+       src: "{{playbook_dir}}/dotfiles/{{item}}"
+       dest: "{{ansible_env.HOME}}/{{item}}"
+       state: link
+       force: yes
+     loop:
+       - .zshrc
+       - .tmux.conf 
+       - .gitconfig
+               
+   - name: Install tmux plugin manager
+     ansible.builtin.git:
+       repo: https://github.com/tmux-plugins/tpm
+       dest: ~/.tmux/plugins/tpm
+               
+   - name: Change zsh as default shell
+     become: yes
+     ansible.builtin.user:
+      name: "{{ansible_user_id}}"
+      shell: /usr/bin/zsh
